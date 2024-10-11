@@ -1,21 +1,19 @@
 import express from 'express';
-import mysql from 'mysql';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import db from './db.js';
 
 const app = express();
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
+app.use(express.json());
 
-app.get("/", (req,res)=>{
-    res.json("Server responding");
-})
+app.get('/', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+      if (err) {
+        res.status(500).send('Database query error');
+      } else {
+        res.json(results);
+      }
+    });
+  });
 
 app.listen(5555, ()=>{
-    console.log("Server connected");
+    console.log("[LTW] Server connected");
 })
