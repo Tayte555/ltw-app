@@ -4,27 +4,27 @@
 
 ## 📝 Table of Contents
 
-- [About](#about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
+- [About](#-about)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
 - [Usage](#-usage)
-- [Contact](#contact)
+- [Contact](#-contact)
 
 
-## About
+## ❓ About
 
 - What problem is being solved? Currently this fantasy football game is being played and tracked via continuously sending emails to participants and tracking results via an Excel spreadsheet. Not very efficient.
 - How is this being solved? By automating the whole process by providing a user authentication system, api score tracking to match EPL results to result selected by the user, competition setup, automated email reminders.
 - Who is doing it? Hi I'm the lead dev Tayte, I'm building this as a passion project before starting my final year university studies to gain experience with Angular and backend setup. 
 
 
-## Features
+## 🚀 Features
 
 🚧 Coming Soon 🚧
 
 
-## Tech Stack
+## 🔨 Tech Stack
 
 | Technology | Description |
 |------------|-------------|
@@ -33,7 +33,7 @@
 | Database   | MongoDB |
 
 
-## Installation
+## 🧰 Installation
 
 1. Clone the repository:
 
@@ -57,7 +57,7 @@
     ```bash
     npm run dev
 
-## Contact
+## 📬 Contact
 
 Lead Developer:
 @Tayte555 - taytekeates@gmail.com - https://www.linkedin.com/in/taytekeates/
