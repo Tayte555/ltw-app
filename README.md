@@ -8,7 +8,7 @@
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Usage](#-usage)
 - [Contact](#contact)
 
 
@@ -50,7 +50,7 @@
     ```bash
     npm run install:all
 
-## Usage
+## 💡 Usage
 
 - Start the development server:
 
