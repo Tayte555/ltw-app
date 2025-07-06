@@ -1,19 +1,13 @@
-import express from 'express';
-import db from './db.js';
+import express from "express";
+import authRoutes from "./routes/auth.js";
+import { connectDB } from "./db.js";
 
 const app = express();
 app.use(express.json());
+app.use("/auth", authRoutes);
 
-app.get('/', (req, res) => {
-    db.query('SELECT * FROM users', (err, results) => {
-      if (err) {
-        res.status(500).send('Database query error');
-      } else {
-        res.json(results);
-      }
-    });
-  });
+connectDB();
 
-app.listen(5555, ()=>{
-    console.log("[LTW] Server connected");
-})
+app.listen(5555, () => {
+  console.log("[WSO] Server connected on port 5555");
+});

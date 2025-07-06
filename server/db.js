@@ -1,22 +1,18 @@
-import mysql from 'mysql';
-import dotenv from 'dotenv';
+import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
+const uri = process.env.WSO_URI;
+const client = new MongoClient(uri);
 
-db.connect((err) => {
-    if(err) {
-        console.error('Error connecting to database: ', err);
-        return;
-    }
-    console.log('[LTW] Database connected');
-});
+export async function connectDB() {
+  try {
+    await client.connect();
+    console.log("[WSO] Connected to MongoDB");
+  } catch (err) {
+    console.error("[WSO] MongoDB connection error: ", err);
+  }
+}
 
-export default db;
-
+export { client };

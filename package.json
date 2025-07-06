@@ -4,11 +4,15 @@
   "description": "Last Team Wins - Frontend + Backend Control",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
     "server": "cd server && npm start",
     "client": "cd client && ng serve",
     "server:i": "cd server && npm install",
     "client:i": "cd client && npm install"
   },
   "author": "Tayte Keates",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
 }
