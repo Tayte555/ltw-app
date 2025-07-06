@@ -8,7 +8,8 @@
     "server": "cd server && npm start",
     "client": "cd client && ng serve",
     "server:i": "cd server && npm install",
-    "client:i": "cd client && npm install"
+    "client:i": "cd client && npm install",
+    "install:all": "npm install && cd server && npm install && cd .. && cd server && npm install"
   },
   "author": "Tayte Keates",
   "license": "ISC",
