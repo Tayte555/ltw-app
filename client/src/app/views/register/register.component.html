@@ -1,1 +1,52 @@
-<p>register works!</p>
+<div class="mx-96 my-32 p-4">
+  <h1 class="text-center text-5xl font-bold mb-5">Register</h1>
+  <div class="grid grid-cols-3 mb-5">
+    <div class="pb-10 pr-5">
+      <h2 class="text-xl font-semibold mb-2">First Name</h2>
+      <input
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. John"
+      />
+    </div>
+    <div class="pr-5">
+      <h2 class="text-xl font-semibold mb-2">Last Name</h2>
+      <input
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. Smith"
+      />
+    </div>
+    <div class="pr-5">
+      <h2 class="text-xl font-semibold mb-2">Username</h2>
+      <input
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. JohnSmithy128"
+      />
+    </div>
+    <div class="pr-5">
+      <h2 class="text-xl font-semibold mb-2">Email</h2>
+      <input
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. johnsmith1997@example.com"
+      />
+    </div>
+    <div class="pr-5">
+      <h2 class="text-xl font-semibold mb-2">Password</h2>
+      <input
+        type="password"
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. Ex4mpleP@ss!2"
+      />
+    </div>
+    <div class="pr-5">
+      <h2 class="text-xl font-semibold mb-2">Confirm Password</h2>
+      <input
+        type="password"
+        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
+        placeholder="e.g. Ex4mpleP@ss!2"
+      />
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <app-button routerLink="/register" text="Submit"></app-button>
+  </div>
+</div>

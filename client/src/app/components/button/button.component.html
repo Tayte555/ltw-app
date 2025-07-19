@@ -1,0 +1,12 @@
+<a
+  *ngIf="routerLink"
+  [routerLink]="routerLink"
+  [ngClass]="getClasses()"
+  class="inline-block"
+>
+  {{ text }}
+</a>
+
+<button *ngIf="!routerLink" [ngClass]="getClasses()">
+  {{ text }}
+</button>
