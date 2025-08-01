@@ -4648,6 +4648,7 @@ export {
   noop,
   pipe,
   Observable,
+  createOperatorSubscriber,
   refCount,
   ConnectableObservable,
   Subject,
@@ -4655,6 +4656,7 @@ export {
   AsyncAction,
   AsyncScheduler,
   EMPTY,
+  popResultSelector,
   innerFrom,
   observeOn,
   subscribeOn,
@@ -4664,6 +4666,9 @@ export {
   EmptyError,
   timeout,
   map,
+  mapOneOrManyArgs,
+  argsArgArrayOrObject,
+  createObject,
   combineLatest,
   mergeMap,
   mergeAll,
@@ -4775,4 +4780,4 @@ export {
   partition,
   race
 };
-//# sourceMappingURL=chunk-DESZ72U3.js.map
+//# sourceMappingURL=chunk-65JXNOQR.js.map

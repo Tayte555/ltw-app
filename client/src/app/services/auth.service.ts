@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5555/api/auth';
+  private apiUrl = 'http://localhost:5555/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -17,7 +17,13 @@ export class AuthService {
     );
   }
 
-  register(data: { email: string; password: string }) {
+  register(data: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    email: string;
+    password: string;
+  }) {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
 

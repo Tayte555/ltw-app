@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { NgIf } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -17,6 +16,9 @@ export class ButtonComponent {
   @Input() hover: boolean = true;
   @Input() border: boolean = false;
   @Input() routerLink: string | null = null;
+  @Input() type: 'button' | 'submit' = 'button';
+  @Input() disabled: boolean = false;
+  @Output() clicked = new EventEmitter<void>();
 
   getClasses(): string {
     const base = 'px-5 py-2 font-medium rounded transition';
@@ -34,7 +36,14 @@ export class ButtonComponent {
     const selectedColor = colorClasses[this.color];
     const hoverEffect = this.hover ? hoverClasses[this.color] : '';
     const borderStyle = this.border ? 'border border-black' : '';
+    const disabledStyle = this.disabled ? 'opacity-50 cursor-not-allowed' : '';
 
-    return `${base} ${selectedColor} ${hoverEffect} ${borderStyle}`;
+    return `${base} ${selectedColor} ${hoverEffect} ${borderStyle} ${disabledStyle}`;
+  }
+
+  onClick() {
+    if (!this.disabled) {
+      this.clicked.emit();
+    }
   }
 }

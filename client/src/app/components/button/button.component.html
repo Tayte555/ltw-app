@@ -7,6 +7,12 @@
   {{ text }}
 </a>
 
-<button *ngIf="!routerLink" [ngClass]="getClasses()">
+<button
+  *ngIf="!routerLink"
+  [type]="type"
+  [disabled]="disabled"
+  [ngClass]="getClasses()"
+  (click)="onClick()"
+>
   {{ text }}
 </button>

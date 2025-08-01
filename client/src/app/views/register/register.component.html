@@ -1,52 +1,240 @@
 <div class="mx-96 my-32 p-4">
   <h1 class="text-center text-5xl font-bold mb-5">Register</h1>
-  <div class="grid grid-cols-3 mb-5">
-    <div class="pb-10 pr-5">
-      <h2 class="text-xl font-semibold mb-2">First Name</h2>
-      <input
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. John"
-      />
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="grid grid-cols-3 mb-5">
+      <div class="pb-3 pr-5">
+        <h2 class="text-xl font-semibold mb-2">First Name</h2>
+        <input
+          [ngClass]="{
+            ' border-red-500': form.get('firstName')?.invalid && form.get('firstName')?.touched,
+             ' border-slate-900': !(form.get('firstName')?.invalid && form.get('firstName')?.touched),
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. John"
+          formControlName="firstName"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('firstName')?.touched &&
+              form.get('firstName')?.invalid &&
+              (
+                form.get('firstName')?.errors?.['required'] ||
+                form.get('firstName')?.value?.length > 0
+                  )
+                )
+              "
+        >
+          <ng-container *ngIf="form.get('firstName')?.errors?.['required']">
+            First name is required
+          </ng-container>
+          <ng-container *ngIf="form.get('firstName')?.errors?.['maxlength']">
+            Maximum 30 Characters
+          </ng-container>
+        </p>
+      </div>
+      <div class="pr-5">
+        <h2 class="text-xl font-semibold mb-2">Last Name</h2>
+        <input
+          [ngClass]="{
+            'border-red-500': form.get('lastName')?.invalid && form.get('lastName')?.touched,
+             'border-slate-900': !(form.get('lastName')?.invalid && form.get('lastName')?.touched),
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. Smith"
+          formControlName="lastName"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('lastName')?.touched &&
+              form.get('lastName')?.invalid &&
+              (
+                form.get('lastName')?.errors?.['required'] ||
+                form.get('lastName')?.value?.length > 0
+                  )
+                )
+              "
+        >
+          <ng-container *ngIf="form.get('lastName')?.errors?.['required']">
+            Last name is required
+          </ng-container>
+          <ng-container *ngIf="form.get('lastName')?.errors?.['maxlength']">
+            Maximum 30 Characters
+          </ng-container>
+        </p>
+      </div>
+      <div class="pr-5">
+        <h2 class="text-xl font-semibold mb-2">Username</h2>
+        <input
+          [ngClass]="{
+            'border-red-500': form.get('username')?.invalid && form.get('username')?.touched,
+             'border-slate-900': !(form.get('username')?.invalid && form.get('username')?.touched),
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. JohnSmithy289"
+          formControlName="username"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('username')?.touched &&
+              form.get('username')?.invalid &&
+              (
+                form.get('username')?.errors?.['required'] ||
+                form.get('username')?.value?.length > 0
+              )
+            )
+          "
+        >
+          <ng-container *ngIf="form.get('username')?.errors?.['required']">
+            Username is required
+          </ng-container>
+          <ng-container *ngIf="form.get('username')?.errors?.['maxlength']">
+            Maximum 20 Characters
+          </ng-container>
+          <ng-container *ngIf="form.get('username')?.errors?.['minlength']">
+            Minimum 3 Characters
+          </ng-container>
+        </p>
+      </div>
+      <div class="pr-5">
+        <h2 class="text-xl font-semibold mb-2">Email</h2>
+        <input
+          [ngClass]="{
+            'border-red-500': form.get('email')?.invalid && form.get('email')?.touched,
+             'border-slate-900': !(form.get('email')?.invalid && form.get('email')?.touched),
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. johnsmith1997@example.com"
+          formControlName="email"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('email')?.touched &&
+              form.get('email')?.invalid &&
+              (
+                form.get('email')?.errors?.['required'] ||
+                form.get('email')?.value?.length > 0
+              )
+            )
+          "
+        >
+          <ng-container *ngIf="form.get('email')?.errors?.['required']">
+            Email is required
+          </ng-container>
+          <ng-container *ngIf="form.get('email')?.errors?.['email']">
+            Invalid email format
+          </ng-container>
+        </p>
+      </div>
+      <div class="pr-5">
+        <h2 class="text-xl font-semibold mb-2">Password</h2>
+        <input
+          type="password"
+          [ngClass]="{
+            'border-red-500':
+              form.get('password')?.invalid && form.get('password')?.touched,
+            'border-slate-900': !(
+              form.get('password')?.invalid && form.get('password')?.touched
+            )
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. Ex4mpleP@ss!2"
+          formControlName="password"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('password')?.touched &&
+              form.get('password')?.invalid &&
+              (
+                form.get('password')?.errors?.['required'] ||
+                form.get('password')?.value?.length > 0
+              )
+            )
+          "
+        >
+          <ng-container *ngIf="form.get('password')?.errors?.['required']">
+            Password is required
+          </ng-container>
+          <ng-container *ngIf="form.get('password')?.errors?.['minlength']">
+            Minimum 8 Characters
+          </ng-container>
+          <ng-container *ngIf="form.get('password')?.errors?.['maxlength']">
+            Maximum 30 Characters
+          </ng-container>
+          <ng-container
+            *ngIf="
+              form.get('password')?.errors?.['pattern'] &&
+              !form.get('password')?.errors?.['minlength'] &&
+              !form.get('password')?.errors?.['maxlength']
+            "
+          >
+            Must include: uppercase, number & special character
+          </ng-container>
+        </p>
+      </div>
+      <div class="pr-5">
+        <h2 class="text-xl font-semibold mb-2">Confirm Password</h2>
+        <input
+          type="password"
+          [ngClass]="{
+            'border-red-500': form.get('confirmPassword')?.touched && 
+            (form.get('confirmPassword')?.invalid || form.errors?.['passwordMismatch']),
+            'border-slate-900': !(form.get('confirmPassword')?.touched && 
+            (form.get('confirmPassword')?.invalid || form.errors?.['passwordMismatch']))
+          }"
+          class="w-full border-0 border-b-2 focus:outline-none pb-1"
+          placeholder="e.g. Ex4mpleP@ss!2"
+          formControlName="confirmPassword"
+        />
+        <p
+          class="text-sm text-red-500 h-5 mt-1"
+          [class.invisible]="
+            !(
+              form.get('confirmPassword')?.touched &&
+              (
+                form.get('confirmPassword')?.errors?.['required'] ||
+                form.errors?.['passwordMismatch']
+              )
+            )
+          "
+        >
+          <ng-container
+            *ngIf="form.get('confirmPassword')?.errors?.['required']"
+          >
+            Confirm password is required
+          </ng-container>
+
+          <ng-container
+            *ngIf="
+              form.errors?.['passwordMismatch'] &&
+              !form.get('confirmPassword')?.errors?.['required']
+            "
+          >
+            Passwords do not match
+          </ng-container>
+        </p>
+      </div>
     </div>
-    <div class="pr-5">
-      <h2 class="text-xl font-semibold mb-2">Last Name</h2>
-      <input
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. Smith"
-      />
+    <div class="flex justify-center">
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50"
+        >
+          Register
+        </button>
+      </div>
     </div>
-    <div class="pr-5">
-      <h2 class="text-xl font-semibold mb-2">Username</h2>
-      <input
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. JohnSmithy128"
-      />
-    </div>
-    <div class="pr-5">
-      <h2 class="text-xl font-semibold mb-2">Email</h2>
-      <input
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. johnsmith1997@example.com"
-      />
-    </div>
-    <div class="pr-5">
-      <h2 class="text-xl font-semibold mb-2">Password</h2>
-      <input
-        type="password"
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. Ex4mpleP@ss!2"
-      />
-    </div>
-    <div class="pr-5">
-      <h2 class="text-xl font-semibold mb-2">Confirm Password</h2>
-      <input
-        type="password"
-        class="w-full border-0 border-b-2 border-slate-900 focus:outline-none pb-1"
-        placeholder="e.g. Ex4mpleP@ss!2"
-      />
-    </div>
-  </div>
-  <div class="flex justify-center">
-    <app-button routerLink="/register" text="Submit"></app-button>
-  </div>
+  </form>
 </div>
