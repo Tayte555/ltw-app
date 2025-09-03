@@ -50,20 +50,29 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password)
-    return res.status(400).send("Missing email or password");
+    return res.status(400).json({ message: "Missing email or password" });
 
   try {
     const user = await users.findOne({ email });
-    if (!user) return res.status(401).send("Invalid credentials");
+    console.log("Login attempt:", { email });
+    console.log("Found user:", user);
 
+    if (!user) return res.status(401).json({ message: "Invalid credentials" });
+
+    console.log("Comparing passwords:", password, user.password);
     const validPass = await bcrypt.compare(password, user.password);
-    if (!validPass) return res.status(401).send("Invalid credentials");
+    console.log("Password valid?", validPass);
+
+    if (!validPass)
+      return res.status(401).json({ message: "Invalid credentials" });
 
     const token = generateToken({ id: user._id, email: user.email });
+    console.log("Generated token:", token);
 
     res.json({ token });
   } catch (error) {
-    res.status(500).send("Server error");
+    console.error("Login server error:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 

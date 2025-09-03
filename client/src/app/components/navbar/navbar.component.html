@@ -11,7 +11,15 @@
     <a routerLink="/faq" class="text-white">F.A.Q.</a>
     <a routerLink="/support" class="text-white">Support</a>
   </div>
-  <div class="flex justify-end items-center px-5">
-    <p class="text-white">Log In</p>
+
+  <div
+    *ngIf="user; else log_in_prompt"
+    class="flex justify-end items-center px-5"
+  >
+    <p class="text-white">{{ user.username }}</p>
   </div>
+
+  <ng-template #log_in_prompt class="flex justify-end items-center px-5">
+    <a routerLink="/login" class="text-white">Log In</a>
+  </ng-template>
 </div>

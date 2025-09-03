@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div
+  class="mx-auto my-32 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-96 max-w-screen-xl"
+>
+  <h1 class="text-center text-5xl font-bold mb-5">Login</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="grid mb-5">
+      <div class="pb-3">
+        <h2 class="text-xl font-semibold mb-2">Email</h2>
+        <input
+          class="w-full border-0 border-slate-900 border-b-2 focus:outline-none pb-1"
+          formControlName="email"
+        />
+      </div>
+      <div class="pb-3">
+        <h2 class="text-xl font-semibold mb-2">Password</h2>
+        <input
+          class="w-full border-0 border-slate-900 border-b-2 focus:outline-none pb-1"
+          formControlName="password"
+          type="password"
+        />
+      </div>
+      <a routerLink="" class="text-right">Forgot password?</a>
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 mt-3"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
