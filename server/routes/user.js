@@ -7,6 +7,20 @@ const router = express.Router();
 const db = client.db(process.env.DB_NAME);
 const users = db.collection("Users");
 
+// Get all users
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await users
+      .find({}, { projection: { password: 0 } })
+      .toArray();
+    res.json(allUsers);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Get logged-in user details
 router.get("/me", authMiddleware, async (req, res) => {
   try {
     if (!ObjectId.isValid(req.user.id)) {

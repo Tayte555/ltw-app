@@ -1,8 +1,8 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 import { client } from "../db.js";
 import { generateToken } from "../utils/jwt.js";
-import dotenv from "dotenv";
 
 dotenv.config();
 

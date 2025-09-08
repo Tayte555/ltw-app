@@ -8,11 +8,12 @@ import {
 } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NgIf } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, NavbarComponent, NgIf],
+  imports: [RouterOutlet, RouterModule, NavbarComponent, NgIf, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

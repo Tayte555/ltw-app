@@ -16,10 +16,59 @@
     *ngIf="user; else log_in_prompt"
     class="flex justify-end items-center px-5"
   >
-    <p class="text-white">{{ user.username }}</p>
+    <div class="flex space-x-3 items-center">
+      <p class="text-white">{{ user.username }}</p>
+      <img
+        src="avatar.jpg"
+        height="45"
+        width="45"
+        class="rounded-full cursor-pointer"
+        (click)="toggleUserDropdown()"
+      />
+    </div>
   </div>
 
-  <ng-template #log_in_prompt class="flex justify-end items-center px-5">
-    <a routerLink="/login" class="text-white">Log In</a>
+  <div
+    *ngIf="isUserDropdownOpen"
+    class="absolute top-16 right-5 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+  >
+    <ul class="p-3 space-y-3">
+      <div class="flex space-x-2 items-center">
+        <img
+          src="avatar.jpg"
+          class="w-[30px] h-[30px] rounded-full object-cover"
+        />
+        <div>
+          <p class="text-sm">{{ user.username }}</p>
+          <p class="text-sm text-gray-500">{{ user.firstName }}</p>
+        </div>
+      </div>
+
+      <hr class="divide-solid" />
+
+      <div class="text-sm">
+        <li class="hover:bg-gray-200 rounded-md p-1 cursor-pointer">
+          Settings
+        </li>
+        <li class="hover:bg-gray-200 rounded-md p-1 cursor-pointer">
+          Personalisation
+        </li>
+      </div>
+
+      <hr class="divide-solid" />
+
+      <li
+        class="text-sm hover:bg-gray-200 rounded-md p-1 cursor-pointer"
+        (click)="logout()"
+      >
+        Sign out
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #log_in_prompt>
+    <a routerLink="/login" class="text-white flex justify-end items-center px-5"
+      >Log In
+    </a>
   </ng-template>
 </div>

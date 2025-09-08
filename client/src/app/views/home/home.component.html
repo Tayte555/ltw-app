@@ -1,5 +1,12 @@
 <div *ngIf="user">
-  <h1>Welcome, {{ user.firstName }} {{ user.lastName }}!</h1>
-  <p>Username: {{ user.username }}</p>
-  <p>Email: {{ user.email }}</p>
+  <div *ngFor="let gw of getGameweeks()">
+    <b>Gameweek {{ gw }}</b>
+    <ul>
+      <li *ngFor="let match of matchesByGameweek[gw]">
+        {{ match.homeTeam?.name }} vs {{ match.awayTeam?.name }} -
+        {{ match.score?.fullTime?.home }} :
+        {{ match.score?.fullTime?.away }}
+      </li>
+    </ul>
+  </div>
 </div>
